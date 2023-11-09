@@ -28,3 +28,20 @@ a {
     color: white;
     text-decoration: none;
 }
+
+ul {
+    border-bottom: 2px white solid;
+    padding-bottom: 10px;
+}
+
+.album-container {
+    padding: 20px;
+}
+
+.album-name {
+    font-size: 1.2rem;
+}
+
+.data-info {
+    font-size: 1rem;
+}
