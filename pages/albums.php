@@ -16,7 +16,7 @@
     $result = $conn->query($sql);
 
     // Initialize an empty array to store the results
-    $albumsArray = array();
+    $albumsArray = [];
 
     // Check if it's returned anything
     if ($result->num_rows > 0) {
@@ -48,7 +48,7 @@
 
     // display the data gathered from the query
     foreach ($albumsArray as $album) {
-        echo '<div class="album-container">';
+        echo '<div class="container">';
         echo '<p class="album-name">' . $album['name'] . '</p>';
         echo '<p class="data-info">Release Year: ' . $album['release_year'] . '</p>';
         echo '<p class="data-info">Artist: ' . $album['artist_name'] . '</p>';

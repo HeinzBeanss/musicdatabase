@@ -34,11 +34,11 @@ ul {
     padding-bottom: 10px;
 }
 
-.album-container {
+.container {
     padding: 20px;
 }
 
-.album-name {
+.album-name, .artist-name, .song-name {
     font-size: 1.2rem;
 }
 

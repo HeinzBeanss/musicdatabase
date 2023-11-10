@@ -5,6 +5,22 @@
 
     include('../config/db.php');
     
+    $sql = "SELECT Artists.* FROM Artists";
+    $result = $conn->query($sql);
+
+    $artistsArray = [];
+
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $artistsArray[] = $row;
+        }
+       } else {
+        $artistsArray = ['message' => 'No artists found.'];
+       }
+
+       $conn->close();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +33,13 @@
 <body>
     <?php
     include('../includes/header.php');
+
+    foreach($artistsArray as $artist) {
+        echo '<div class="container">';
+        echo '<p class="artist-name">' . $artist['name'] . '</p>';
+        echo '<p class="data-info">' . $artist['birthdate'] . '</p>';
+        echo '</div>';
+    }
     ?>
 </body>
 </html>
