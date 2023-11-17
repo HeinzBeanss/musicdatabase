@@ -19,10 +19,10 @@
     $result = $conn->query($sql);
 
     // fetch_fields creates an array of each of the columns from the data queried
-    $fields = $result->fetch_fields();
-    foreach ($fields as $field) {
-       echo $field->name . "<br>"; // This will output the name of each field/column
-    }
+    // $fields = $result->fetch_fields();
+    // foreach ($fields as $field) {
+    //    echo $field->name . "<br>"; // This will output the name of each field/column
+    // }
 
     // Retrieved the data in an array.
     $artistsArray = [];
@@ -129,9 +129,9 @@
     //    print_r($artistsArray[7]);
     //    echo '<br>';
 
-    print_r($artists_formatted[1]);
-    echo '<br>';
-    print_r($artists_formatted[2]);
+    // print_r($artists_formatted[1]);
+    // echo '<br>';
+    // print_r($artists_formatted[2]);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -144,6 +144,23 @@
 <body>
     <?php
     include('../includes/header.php');
+
+    ?>
+
+    <h2>Add an Artist</h2>
+    <form action="../actions/create_artist.php" method="POST">
+        <label for="artist_name">Artist Name:
+            <input type="text" name="artist_name" id="artist_name" required>
+        </label>
+
+        <label for="artist_birthdate">Artist Birthdate:
+            <input type="date" name="artist_birthdate" id="artist_birthdate" required>
+        </label>
+
+        <button>Add Artist</button>
+    </form>
+
+    <?php
 
     foreach($artists_formatted as $artist) {
         echo '<div class="container">';
