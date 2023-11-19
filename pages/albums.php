@@ -95,6 +95,14 @@
         echo '<p class="album-name">' . $album['name'] . '</p>';
         echo '<p class="data-info">Release Year: ' . $album['release_year'] . '</p>';
         echo '<p class="data-info">Artist: ' . $album['artist_name'] . '</p>';
+        ?>
+
+        <form action="../actions/delete_album.php" method="POST">
+            <input type="hidden" name="album_id" value="<?php echo $album['album_id']; ?>" >
+            <button>Delete Album</button>
+        </form>
+
+        <?php
         echo '</div>'; 
 
         // Display other album-specific details

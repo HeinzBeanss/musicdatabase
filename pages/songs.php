@@ -109,6 +109,14 @@
         echo '<p class="data-info">' . $song['length_seconds'] . " Seconds" . '</p>';
         echo '<p class="data-info">' . $song['artist_name'] . '</p>';
         echo '<p class="data-info">' . $song['album_name'] . '</p>';
+        ?>
+
+        <form action="../actions/delete_song.php" method="POST">
+            <input type="hidden" name="song_id" value="<?php echo $song['song_id']; ?>" >
+            <button>Delete Song</button>
+        </form>
+
+        <?php
         echo '</div>';
     }
 

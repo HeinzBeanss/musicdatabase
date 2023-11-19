@@ -140,6 +140,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../styleee.css" rel="stylesheet">
     <title>Artists</title>
+    <script src="../functions/toggleInputDisplay.js"></script>
 </head>
 <body>
     <?php
@@ -164,14 +165,32 @@
 
     foreach($artists_formatted as $artist) {
         echo '<div class="container">';
-        echo '<p class="artist-name">' . $artist->artist_name . '</p>';
-        echo '<p class="data-info">' . $artist->artist_birthdate . '</p>';
+
+        echo '<form id="editForm" action="../actions/update_artist.php" method="POST">';
+
+        echo '<p class="artist_' . $artist->artist_id . ' name">' . $artist->artist_name . '</p>';
+        echo '<p class="artist_' . $artist->artist_id . ' birthdate">' . $artist->artist_birthdate . '</p>';
+
+        echo '</form>';
+
         echo '<p class="data-info">' . "Albums: " . '</p>';
         foreach($artist->albums as $album) {
-            echo '<p class="data-info">' . $album->album_name . '</p>';
-            echo '<p class="data-info">' . $album->album_release_year . '</p>';
+            echo '<p class="data-info">' . $album->album_name . ' - ' . $album->album_release_year . '</p>';
         }
         echo '<p class="data-info">' .'</p>';
+        ?>
+
+        <form action="../actions/delete_artist.php" method="POST">
+            <input type="hidden" name="artist_id" value="<?php echo $artist->artist_id; ?>" >
+            <button>Delete Artist</button>
+        </form>
+
+
+        <button form="editForm" type="button" class="<?php echo 'editartist_' . $artist->artist_id ?> edit"  onclick="toggleDisplay(<?php echo $artist->artist_id ?>, event)">Edit Artist</button>
+       
+
+
+        <?php
         echo '</div>';
     }
     ?>
