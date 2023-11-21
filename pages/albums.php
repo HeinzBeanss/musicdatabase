@@ -40,6 +40,7 @@
         // no artists found, which is fine.
     }
 
+    $jsonArtists = json_encode($artist_list);
     $conn->close();
 
     // print_r($albumsArray); // Display the array (for testing)
@@ -52,12 +53,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../styleee.css" rel="stylesheet">
     <title>Albums</title>
+    <script src="../functions/toggleInputDisplayAlbums.js"></script>
 </head>
 <body>
-    <?php
-    include('../includes/header.php');
-
-    ?>
+    <?php include('../includes/header.php'); ?>
 
     <h2>Add an Album</h2>
     <form action="../actions/create_album.php" method="POST">
@@ -89,13 +88,27 @@
     <?php
 
 
-    // display the data gathered from the query
     foreach ($albumsArray as $album) {
         echo '<div class="container">';
-        echo '<p class="album-name">' . $album['name'] . '</p>';
-        echo '<p class="data-info">Release Year: ' . $album['release_year'] . '</p>';
-        echo '<p class="data-info">Artist: ' . $album['artist_name'] . '</p>';
+
+        echo '<form id="editForm' . $album['album_id'] .'" action="../actions/update_album.php" method="POST">';
+
+        echo '<p class="album_' . $album['album_id'] .' name">' . $album['name'] . '</p>';
+        echo '<p class="album_' . $album['album_id'] .' release_year">' . $album['release_year'] . '</p>';
+        echo '<p class="album_' . $album['album_id'] .' album_artist">' . $album['artist_name'] . '</p>';
+        echo '<input type="hidden" value="' . $album['album_id'] . '" name="artist_id">';
+
+        echo '</form>';
         ?>
+
+        <button 
+        form="editForm<?php echo $album['album_id']?>" 
+        type="button" 
+        class="<?php echo 'editalbum_' . $album['album_id'] ?> edit" 
+        onclick="toggleDisplay(
+            <?php echo $album['album_id'] ?>, 
+            <?php echo htmlspecialchars($jsonArtists) ?>, 
+            event)">Edit Album</button>
 
         <form action="../actions/delete_album.php" method="POST">
             <input type="hidden" name="album_id" value="<?php echo $album['album_id']; ?>" >
