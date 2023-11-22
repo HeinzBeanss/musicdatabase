@@ -1,6 +1,4 @@
 const toggleDisplay = (albumID, artist_list, event) => {
-    event.preventDefault();
-    console.log("anything")
     console.log(artist_list);
 
     const editButton = document.querySelector(".editalbum_" + albumID);
@@ -15,7 +13,7 @@ const toggleDisplay = (albumID, artist_list, event) => {
 
     const elementsToChange = document.querySelectorAll(".album_" + albumID);
     elementsToChange.forEach(element => {
-        if (element.tagName.toLocaleLowerCase() !== 'input' || element.tagName.toLocaleLowerCase() !== 'select') {
+        if (element.tagName.toLowerCase() !== 'input' || element.tagName.toLowerCase() !== 'select') {
             event.preventDefault();
             const text = element.textContent;
             // Name
@@ -37,7 +35,27 @@ const toggleDisplay = (albumID, artist_list, event) => {
                 newElement.max = "2999";
                 element.replaceWith(newElement);
             } else if (element.classList.contains("album_artist")) {
-            };
+                const newElement = document.createElement("select");
+                newElement.classList.add("album_" + albumID);
+                newElement.name = "album_artist";
+                newElement.setAttribute("required", "");
+                artist_list.forEach(artist => {
+                    const newOption = document.createElement("option");
+                    newOption.value = artist.artist_id;
+                    newOption.textContent = artist.name;
+                    if (element.classList.contains("artist_" + artist.artist_id)) {
+                        newOption.setAttribute("selected", "");
+                    }
+                    newElement.appendChild(newOption);
+                });
+                element.replaceWith(newElement);
+            }
+        } else {
+            const text = element.value;
+            const display = document.createElement("p");
+            display.textContent = text;
+            display.classList.add("album_" + albumID);
+            element.replaceWith(display);
         }
     })
 };

@@ -95,8 +95,8 @@
 
         echo '<p class="album_' . $album['album_id'] .' name">' . $album['name'] . '</p>';
         echo '<p class="album_' . $album['album_id'] .' release_year">' . $album['release_year'] . '</p>';
-        echo '<p class="album_' . $album['album_id'] .' album_artist">' . $album['artist_name'] . '</p>';
-        echo '<input type="hidden" value="' . $album['album_id'] . '" name="artist_id">';
+        echo '<p class="album_' . $album['album_id'] .' album_artist artist_' . $album['artist_id'] .'">' . $album['artist_name'] . '</p>';
+        echo '<input type="hidden" value="' . $album['album_id'] . '" name="album_id">';
 
         echo '</form>';
         ?>

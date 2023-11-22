@@ -5,7 +5,7 @@
 
     include('../config/db.php');
 
-    $sql = "SELECT Songs.song_id, Songs.name, Songs.length_seconds, Artists.name AS artist_name, Albums.name AS album_name
+    $sql = "SELECT Songs.song_id, Songs.name, Songs.length_seconds, Artists.name AS artist_name, Albums.name AS album_name, Songs.artist_id, Songs.album_id
     FROM Songs
     JOIN Artists ON Songs.artist_id = Artists.artist_id
     LEFT JOIN Albums ON Songs.album_id = Albums.album_id;";
@@ -43,6 +43,8 @@
         // no artists found, which is fine.
     }
 
+    $jsonArtists = json_encode($artist_list);
+    $jsonAlbums = json_encode($album_list);
     $conn->close();
 
 ?>
@@ -53,6 +55,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../styleee.css" rel="stylesheet">
     <title>Songs</title>
+    <script src="../functions/toggleInputDisplaySongs.js"></script>
 </head>
 <body>
     <?php
@@ -65,7 +68,7 @@
         </label>
 
         <label for="song_length">Song Length (Seconds)
-            <input type="number" min="1" max="10000" id="song_length" name="song_length">
+            <input type="number" min="1" max="10000" id="song_length" name="song_length" required>
         </label>
 
         <label for="song_artist">Select Song Artist:
@@ -105,11 +108,22 @@
 
     foreach($songsArray as $song) {
         echo '<div class="container">';
-        echo '<p class="song-name">' . $song['name'] . '</p>';
-        echo '<p class="data-info">' . $song['length_seconds'] . " Seconds" . '</p>';
-        echo '<p class="data-info">' . $song['artist_name'] . '</p>';
-        echo '<p class="data-info">' . $song['album_name'] . '</p>';
+
+        echo '<form id="editForm'. $song['song_id'] . '" action="../actions/update_song.php" method="POST">';
+        echo '<p class="song_'. $song['song_id'].' name">' . $song['name'] . '</p>';
+        echo '<p class="song_'. $song['song_id'].' length_seconds">' . $song['length_seconds'] . '</p>';
+        echo '<p class="song_'. $song['song_id'].' artist_name artist_' . $song['artist_id'].'">' . $song['artist_name'] . '</p>';
+        echo '<p class="song_'. $song['song_id'].' album_name album_'. $song['album_id'] .'">' . $song['album_name'] . '</p>';
+        echo '<input type="hidden" value="'. $song['song_id']. '" name="song_id">';
+        echo '</form>';
         ?>
+
+        <button form="editForm<?php echo $song['song_id']?>"
+        type="button" class="<?php echo 'editsong_' . $song['song_id'] ?> edit" onclick="toggleDisplay(
+            <?php echo $song['song_id'] ?>, 
+            <?php echo htmlspecialchars($jsonArtists) ?>,
+            <?php echo htmlspecialchars($jsonAlbums) ?>,
+            event)">Edit Album</button>
 
         <form action="../actions/delete_song.php" method="POST">
             <input type="hidden" name="song_id" value="<?php echo $song['song_id']; ?>" >
