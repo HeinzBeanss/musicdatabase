@@ -3,7 +3,9 @@
     ini_set('display_errors', 1);
     session_start();
 
-    include('../config/db.php');
+    echo "<br>";
+    echo "this is on songs";
+    include('config/db.php');
 
     $sql = "SELECT Songs.song_id, Songs.name, Songs.length_seconds, Artists.name AS artist_name, Albums.name AS album_name, Songs.artist_id, Songs.album_id
     FROM Songs
@@ -59,7 +61,7 @@
 </head>
 <body>
     <?php
-    include('../includes/header.php');
+    include('includes/header.php');
     ?>
     <h2>Add a Song</h2>
     <form action="../actions/create_song.php" method="POST">

@@ -3,7 +3,7 @@
     ini_set('display_errors', 1);
     session_start();
 
-    include('../config/db.php');
+    include('config/db.php');
     
     $sql = "SELECT Artists.artist_id, 
     Artists.name AS artist_name, 
@@ -144,7 +144,7 @@
 </head>
 <body>
     <?php
-    include('../includes/header.php');
+    include('includes/header.php');
 
     ?>
 

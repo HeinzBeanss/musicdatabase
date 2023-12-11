@@ -1,10 +1,11 @@
 <?php
+    echo "THIS IS BEING LOADED = ALBUMS";
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
     session_start();
 
     // Connect to database
-    include('../config/db.php');
+    include('config/db.php');
 
     // Database Query to get the relevant data
     // Query
@@ -56,7 +57,7 @@
     <script src="../functions/toggleInputDisplayAlbums.js"></script>
 </head>
 <body>
-    <?php include('../includes/header.php'); ?>
+    <?php include('includes/header.php'); ?>
 
     <h2>Add an Album</h2>
     <form action="../actions/create_album.php" method="POST">
