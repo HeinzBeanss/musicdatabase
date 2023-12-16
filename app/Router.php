@@ -1,4 +1,12 @@
 <?php
+
+class Router {
+
+    
+
+
+}
+
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 $routes = [
