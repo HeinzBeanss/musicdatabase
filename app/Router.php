@@ -2,42 +2,44 @@
 
 class Router {
 
-    
+    protected $routes = [];
 
+    public function addRoute($method, $uri, $controller) {
+        $this->routes[] = [
+            'uri' => $uri,
+            'controller' => $controller,
+            'method' => $method,
+            'middleware' => null
+        ];
+    }
 
-}
+    public function get($uri, $controller) {
+        $this->addRoute("GET", $uri, $controller);
+    }
 
-$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+    public function post($uri, $controller) {
+        $this->addRoute("POST", $uri, $controller);
+    }
 
-$routes = [
-'/' => 'pages/albums.php', 
-'/albums' => 'pages/albums.php',
-'/artists' => 'pages/artists.php',
-'/songs' => 'pages/songs.php',
-];
+    public function PUT($uri, $controller) {
+        $this->addRoute("PUT", $uri, $controller);
+    }
 
-function routeToController($uri, $routes) {
-    if (array_key_exists($uri, $routes)) {
-        require($routes[$uri]);
-    } else {
-        abort();
+    public function DELETE($uri, $controller) {
+        $this->addRoute("DELETE", $uri, $controller);
+    }
+
+    public function route($method, $uri) {
+       
+        foreach ($this->routes as $route) {
+            if ($method === $route['method'] && $uri === $route['uri']) {
+                return require base_path("controllers/{$route['controller']}");
+            }
+        }
+        $this->abort(404);
+    }
+
+    public function abort($statuscode = 404) {
+        require viewPage("views/$statuscode.view.php");
     }
 }
-
-function abort($code = 404) {
-    http_response_code($code);
-    require "views/$code.php";
-    die();
-}
-
-routeToController($uri, $routes);
-
-
-// 1 - adds to the variable $uri
-// 2 - uses the parse_url php server function to retrieve the URL
-//     returning it into an associative array. 
-//     ['path'] is the first section of the URL.
-//     ['query'] is the second section of the URL.
-// Example: this means /about?test=this 
-// would have a path of /about, and a query of test=this
-// 3 - ultimately - storing just the path in the $uri.
