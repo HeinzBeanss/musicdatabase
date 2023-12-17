@@ -2,6 +2,9 @@
 
 const BASE_PATH = __DIR__.'/../app/';
 
+require BASE_PATH . '/config/config.php';
+require BASE_PATH . '/config/Database.php';
+
 require BASE_PATH . 'Router.php';
 require BASE_PATH . 'functions/helperFunctions.php';
 
