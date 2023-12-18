@@ -1,20 +1,13 @@
 <?php 
 
-    echo "Page: ";
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
-    session_start();
 
-    include('../config/db.php');
 
     if ($_POST['album_name'] == null) {
-        echo "No Album Data Received! Heading back.";
+
         header ('Location ../pages/albums.php');
         exit();
+
     } else {
-        print_r($_POST['album_name']);
-        print_r($_POST['album_release_year']);
-        print_r($_POST['album_artist']);
 
         $sql = "INSERT INTO Albums (`name`, `release_year`, `artist_id`) VALUES (?, ?, ?)";
 

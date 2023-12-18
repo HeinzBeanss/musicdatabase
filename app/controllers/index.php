@@ -1,3 +1,3 @@
 <?php 
 
-require viewPage('views/index.view.php');
+// require viewPage('index');

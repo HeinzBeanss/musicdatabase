@@ -1,11 +1,5 @@
 <?php
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
-    session_start();
 
-    echo "<br>";
-    echo "this is on songs";
-    include('config/db.php');
 
     $sql = "SELECT Songs.song_id, Songs.name, Songs.length_seconds, Artists.name AS artist_name, Albums.name AS album_name, Songs.artist_id, Songs.album_id
     FROM Songs

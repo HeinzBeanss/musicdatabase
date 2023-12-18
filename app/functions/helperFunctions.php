@@ -22,8 +22,10 @@ function base_path($path) {
 
 }
 
-function viewPage($path) {
+function viewPage($path, $data = []) {
 
-    return BASE_PATH . $path;
+    extract($data);
+    require base_path("views/{$path}.view.php");
     
 }
+
