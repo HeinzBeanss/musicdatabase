@@ -1,3 +1,4 @@
 <?php 
 
-// require viewPage('index');
+// Just album index for now
+require base_path('/controllers/albums/index.php');

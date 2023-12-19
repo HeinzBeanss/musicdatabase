@@ -12,7 +12,7 @@ $router->post("/songs/store", "songs/store.php");
 $router->get("/songs/edit", "songs/edit.php");
 $router->put("/songs/update", "songs/update.php");
 
-$router->get("/songs/delete", "songs/delete.php");
+// $router->get("/songs/delete", "songs/delete.php");
 $router->delete("/songs/destroy", "songs/destroy.php");
 
 
@@ -26,7 +26,7 @@ $router->post("/albums/store", "albums/store.php");
 $router->get("/albums/edit", "albums/edit.php");
 $router->put("/albums/update", "albums/update.php");
 
-$router->get("/albums/delete", "albums/delete.php");
+// $router->get("/albums/delete", "albums/delete.php");
 $router->delete("/albums/destroy", "albums/destroy.php");
 
 
@@ -40,5 +40,5 @@ $router->post("/artists/store", "artists/store.php");
 $router->get("/artists/edit", "artists/edit.php");
 $router->put("/artists/update", "artists/update.php");
 
-$router->get("/artists/delete", "artists/delete.php");
+// $router->get("/artists/delete", "artists/delete.php");
 $router->delete("/artists/destroy", "artists/destroy.php");
