@@ -1,5 +1,7 @@
 <?php 
 
+namespace Core;
+
 class Database {
 
     public $connection;
@@ -9,7 +11,7 @@ class Database {
     public function __construct() {
 
         extract(require base_path('/Config/config.php'));
-        $this->connection = new mysqli($hostname, $username, $password, $database);
+        $this->connection = new \mysqli($hostname, $username, $password, $database);
         
         if ($this->connection->connect_error) {
             die("Connection failed " . $connect_error);

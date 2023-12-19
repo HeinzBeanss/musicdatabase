@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+
+    font-family: 'Montserrat', sans-serif;
+    color: #eeeeee;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    background-color: #1b1b1b;
+}
+
+.header-title {
+    padding: 20px 0;
+    font-size: 3.2rem;
+    font-weight: 500;
+    width: 100%;
+    color: #eeeeee;
+    text-align: center;
+}
+
+.header-nav {
+    background-color: #eeeeee;
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.header-nav > ul {
+    display: flex;
+    list-style-type: none;
+    font-size: 1.4rem;
+    color: #1b1b1b;
+    width: 100%;
+    justify-content: space-evenly;
+
+}
+
+li {
+    color: #1b1b1b;
+    min-width: 100px;
+    text-align: center;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+li:hover {
+
+    font-weight: 500;
+}
+
+main {
+    width: 60%;
+    margin-top: 30px;
+}
+
+.container {
+    margin: 10px 0;
+    width: fit-content;
+}
+
+.album-name, .artist-name, .song-name, .album_title {
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
+.data-info {
+    font-size: 1rem;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-bottom: 0px;
+}
+
+.main-title-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buttonref {
+    background-color: #eeeeee;
+    border-radius: 0.2rem;
+    padding: 8px 15px;
+    font-weight: 500;
+    color: #1b1b1b;
+    border: 0;
+}
+
+.buttonref:hover, button:hover {
+    background-color: #cacaca;
+}
+
+input, select, option {
+    padding: 5px 10px;
+    color: #1b1b1b;
+    border-radius: 0.2rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    border: 0;
+}
+
+.button-area {
+    display: flex;
+    margin: 10px 0;
+    gap: 10px;
+}
+
+button {
+    background-color: #eeeeee;
+    border-radius: 0.2rem;
+    padding: 8px 12px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #1b1b1b;
+    border: 0;
+}
+
+.label-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 0.8rem;
+    margin-bottom: 2px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

@@ -1,5 +1,5 @@
-<h1 class="title">Music Library</h1>
-        <div class="nav">
+<a href="/"><h1 class="header-title">Music Collection</h1></a>
+        <div class="header-nav">
             <ul>
                 <a href="/songs">
                     <li class="nav-item">Songs</li>

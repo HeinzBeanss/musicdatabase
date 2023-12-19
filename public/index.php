@@ -5,8 +5,8 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 const BASE_PATH = __DIR__.'/../app/';
-require BASE_PATH . 'functions/helperFunctions.php';
-require base_path('Router.php');
+require BASE_PATH . 'Core/functions.php';
+require base_path('Core/Router.php');
 
 $router = new Router();
 require base_path('routes.php');

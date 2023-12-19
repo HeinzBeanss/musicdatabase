@@ -1,6 +1,8 @@
 <?php 
 
-require base_path('/Config/Database.php');
+use Core\Database;
+
+require base_path('/Core/Database.php');
 $database = new Database();
 
 if (isset($_POST['album_id'])) {

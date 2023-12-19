@@ -4,10 +4,13 @@ require base_path('views/includes/head.php');
 require base_path('views/includes/header.php');
 
 ?>
+<main>
 
-<h2>Album Collection</h2>
+<div class="main-title-banner">
+    <h2>Album Collection</h2>
+    <a class="buttonref" href="/albums/create">Add Album</a>
+</div>
 
-<a href="/albums/create">Add Album</a>
 <?php
 foreach ($data as $album) {
 
@@ -24,4 +27,7 @@ foreach ($data as $album) {
 <?php
 }
 
+?>
+</main>
+<?php
 require base_path('views/includes/footer.php');
