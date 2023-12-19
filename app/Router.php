@@ -36,10 +36,7 @@ class Router {
                 return require base_path("controllers/{$route['controller']}");
             }
         }
-        $this->abort(404);
+        abort(404);
     }
 
-    public function abort($statuscode = 404) {
-        require viewPage("views/$statuscode.view.php");
-    }
 }

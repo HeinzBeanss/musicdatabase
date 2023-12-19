@@ -29,3 +29,10 @@ function viewPage($path, $data = []) {
     
 }
 
+function abort($errorCode = 404) {
+
+    http_response_code($errorCode);
+    viewPage("$errorCode");
+    die();
+    
+}

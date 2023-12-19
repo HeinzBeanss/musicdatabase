@@ -1,6 +1,5 @@
 <?php 
 
-// dd($database_credentials);
 class Database {
 
     public $connection;
@@ -23,6 +22,30 @@ class Database {
         }
     } 
 
+    public function executePreparedStatement($method, $query, $types = '', ...$params) {
+      
+        $preparedStatement = $this->connection->prepare($query);
+
+        if ($preparedStatement) {
+            if (!empty($types) && count($params) > 0) {
+                $preparedStatement->bind_param($types, ...$params);
+                $executionStatus = $preparedStatement->execute();
+
+                if ($executionStatus) {
+                    if (strtoupper($method) === "GET") {
+                        $result = $preparedStatement->get_result();
+                        return $this->checkResultAndReturn($result);
+                    } else {
+                        return $executionStatus;
+                    }
+                } else {
+                    return "There was an error executing the statement: " . $this->connection->error;
+                }
+            }
+        } else {
+            return "There was an error preparing the statement: " . $this->connection->error;
+        }
+    }
 
     public function checkResultAndReturn($result) {
 
@@ -32,9 +55,10 @@ class Database {
             }
             return $data;
         } else {
-            return "Error: No data was found.";
+            abort();
         }
     }
+    
 }
 
 

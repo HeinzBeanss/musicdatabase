@@ -1,14 +1,5 @@
 <?php
-    echo "THIS IS BEING LOADED = ALBUMS";
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
-    session_start();
 
-    // Connect to database
-    include('config/db.php');
-
-    // Database Query to get the relevant data
-    // Query
     $sql = "SELECT Albums.*, Artists.name AS artist_name
             FROM Albums
             JOIN Artists ON Albums.artist_id = Artists.artist_id";

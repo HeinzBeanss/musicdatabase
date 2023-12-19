@@ -1,4 +1,11 @@
-<form action="../actions/create_album.php" method="POST">
+<?php 
+
+require base_path('views/includes/head.php');
+require base_path('views/includes/header.php');
+
+?>
+
+<form action="/albums/store" method="POST">
     <label for="artist_album">Album Name:
         <input type="text" name="album_name" id="album_name" required>
     </label>
@@ -8,8 +15,8 @@
     <label for="album_artist">Select Album Artist:
         <select id="album_artist" name="album_artist" required>
             <?php
-            if (count($artist_list) > 0) {
-                foreach ($artist_list as $artist) {
+            if (count($data) > 0) {
+                foreach ($data as $artist) {
                     $artist_id = $artist['artist_id'];
                     $artist_name = $artist['name'];
                     echo "<option value=$artist_id>$artist_name</option>";
@@ -20,3 +27,7 @@
     </label>
     <button>Add Album</button>
 </form>
+
+<?php
+
+require base_path('views/includes/footer.php');
