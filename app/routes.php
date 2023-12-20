@@ -32,7 +32,7 @@ $router->delete("/albums/destroy", "albums/destroy.php");
 
 // ARTISTS
 $router->get("/artists", "artists/index.php");
-$router->get("/artists" , "artists/show.php");
+$router->get("/artist" , "artists/show.php");
 
 $router->get("/artists/create", "artists/create.php");
 $router->post("/artists/store", "artists/store.php");

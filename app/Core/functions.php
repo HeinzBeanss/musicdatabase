@@ -24,7 +24,9 @@ function base_path($path) {
 
 function viewPage($path, $data = []) {
 
-    extract($data);
+    if (is_array($data)) {
+        extract($data);
+    }
     require base_path("views/{$path}.view.php");
     
 }

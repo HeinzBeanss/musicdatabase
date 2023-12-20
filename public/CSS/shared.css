@@ -82,7 +82,7 @@ main {
 h2 {
     font-size: 2rem;
     font-weight: 500;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
 }
 
 h3 {
