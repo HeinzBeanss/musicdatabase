@@ -5,6 +5,7 @@ require base_path('views/includes/header.php');
 
 ?>
 <main>
+<h2>Add an Album</h2>
 <form action="/albums/store" method="POST">
 
     <div class="label-group">

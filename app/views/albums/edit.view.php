@@ -8,6 +8,7 @@ $album = $data['album']['0'];
 ?>
 
 <main>
+<h2>Edit Album</h2>
 
 <form id="editForm" action="/albums/update" method="POST">
 
@@ -15,7 +16,7 @@ $album = $data['album']['0'];
     <input type="hidden" name="album_id" value=<?= $album['album_id'] ?> >
 
     <div class="label-group">
-        <label for="album_name">ARTIST NAME</label>
+        <label for="album_name">ALBUM NAME</label>
         <input id="album_name" type="text" name="album_name" value=<?= $album['name']?> >
     </div>
 
