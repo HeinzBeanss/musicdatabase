@@ -23,11 +23,7 @@ foreach ($data as $album) {
 
 </div>
 
-
-<?php
-}
-
-?>
+<?php } ?>
 </main>
 <?php
 require base_path('views/includes/footer.php');
