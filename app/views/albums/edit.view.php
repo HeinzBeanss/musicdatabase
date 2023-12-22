@@ -30,7 +30,9 @@ $album = $data['album']['0'];
         <select id="album_artist" name="album_artist">
         <?php foreach ($data['artist_list'] as $artist) {
             ?>
-        <option  value=<?= $artist['artist_id'] ?> ><?= $artist['name'] ?></option>
+        <option  value=<?= $artist['artist_id'] ?> 
+        <?php if ($artist['artist_id'] == $album['artist_id']) echo 'selected'; ?>>
+        <?= $artist['name'] ?></option>
         <?php } ?>
     </select>
     </div>

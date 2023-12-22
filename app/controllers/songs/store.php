@@ -10,16 +10,17 @@ $database->statement =
 
 
 if (isset($_POST['song_name'])) {
-    if (isset($_POST['song_album'])) {
-        $success = $database->executePreparedStatement($_SERVER['REQUEST_METHOD'], $database->statement, 'siii', $_POST['song_name'], $_POST['song_length'], $_POST['song_artist'], $_POST['song_album']);
 
-        redirect('/songs');
-    } else {
+    if ($_POST['song_album'] === '') {
+
         $success = $database->executePreparedStatement($_SERVER['REQUEST_METHOD'], $database->statement, "siis", $_POST['song_name'], $_POST['song_length'], $_POST['song_artist'], null);
 
         redirect('/songs');
+    } else {
+        $success = $database->executePreparedStatement($_SERVER['REQUEST_METHOD'], $database->statement, 'siii', $_POST['song_name'], $_POST['song_length'], $_POST['song_artist'], $_POST['song_album']);
+        
+        redirect('/songs');
     }
-
 
 } else {
     redirect('/songs');

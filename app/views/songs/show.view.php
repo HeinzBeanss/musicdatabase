@@ -13,7 +13,7 @@ require base_path('views/includes/header.php');
     <a href="/artist?artist_id=<?= $data['0']['artist_id'] ?>"><p class="song_artist_name"><?= $data['0']['artist_name']?></p></a>
     <a <?= isset($data['0']['album_id']) ? 'href="album?album_id=' . $data['0']['album_id'] . '"' : 'disabled'; ?>><p><?= $data['0']['album_name'] ?? ''; ?></p></a>
 </div>
-<a class="buttonref" href="/songs/edit?song_id=<?= $data['0']['song_id'] ?>">Edit Album</a>
+<a class="buttonref" href="/songs/edit?song_id=<?= $data['0']['song_id'] ?>">Edit Song</a>
 
 </main>
 <?php

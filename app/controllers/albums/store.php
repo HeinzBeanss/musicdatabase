@@ -10,9 +10,9 @@ $database->statement =
 
 if (isset($_POST['album_name'])) {
 
-    $result = $database->executePreparedStatement($_SERVER['REQUEST_METHOD'], $database->statement, 'sii', $_POST['album_name'], $_POST['album_release_year'], $_POST['album_artist']);
+    $success = $database->executePreparedStatement($_SERVER['REQUEST_METHOD'], $database->statement, 'sii', $_POST['album_name'], $_POST['album_release_year'], $_POST['album_artist']);
 
-    if ($result) {
+    if ($success) {
         redirect('/albums');
     }
 
