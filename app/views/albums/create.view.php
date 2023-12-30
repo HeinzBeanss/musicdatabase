@@ -23,7 +23,7 @@ require base_path('views/includes/header.php');
         <label for="album_artist">ALBUM ARTIST</label>
         <select id="album_artist" name="album_artist" required>
             <?php
-            if (count($data) > 0) {
+            if (count($data['artist_list']) > 0) {
                 foreach ($data as $artist) {
                     $artist_id = $artist['artist_id'];
                     $artist_name = $artist['name'];

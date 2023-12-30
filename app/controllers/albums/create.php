@@ -11,4 +11,6 @@ $database->statement =
 $result = $database->connection->query($database->statement);
 $artist_list = $database->checkResultAndReturn($result);
 
-viewPage('albums/create', $artist_list);
+viewPage('albums/create', [
+    'artist_list' => $artist_list
+]);

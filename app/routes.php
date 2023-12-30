@@ -2,6 +2,15 @@
 
 $router->get("/", 'index.php');
 
+// AUTH
+$router->get("/login", "auth/login.php");
+$router->post("/login", "auth/login-post.php");
+
+$router->get("/signup", "auth/signup.php");
+$router->post("/signup", "auth/signup-post.php");
+
+$router->post("/logout", "auth/logout.php");
+
 // SONGS
 $router->get("/songs", "songs/index.php");
 $router->get("/song" , "songs/show.php");
