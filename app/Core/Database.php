@@ -57,7 +57,7 @@ class Database {
             }
             return $data;
         } else {
-            abort();
+            return false;
         }
     }
     

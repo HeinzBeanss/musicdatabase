@@ -1,0 +1,3 @@
+<?php 
+
+viewPage("auth/signup");
