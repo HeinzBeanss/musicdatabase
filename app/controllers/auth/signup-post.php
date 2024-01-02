@@ -1,11 +1,15 @@
-<?php 
+<?php
 
 use Core\Database;
 use Core\Validator;
+use Core\Authenticator;
 
 require base_path('/Core/Validator.php');
 require base_path('/Core/Database.php');
+require base_path('/Core/Authenticator.php');
+
 $database = new Database();
+$authenticator = new Authenticator($database);
 
 extract($_POST);
 $hashed_password = password_hash($password, PASSWORD_BCRYPT);
@@ -45,10 +49,12 @@ $database->statement = "INSERT INTO Users(`name`, `email`, `password`) VALUES (?
 $success = $database->executePreparedStatement($_SERVER['REQUEST_METHOD'], $database->statement, 'sss', $username, $email, $hashed_password);
 
 if ($success) {
-    // login! aka authenticate.
-    // redirect to home page after being logged in.
-    // (then complete login-post, which also requires authenticator);
-    // then look at sessions and session flashing.
+
+    $database->statement = "SELECT * FROM Users WHERE email = ?";
+    $user = $database->executePreparedStatement('GET', $database->statement, 's', $email);
+    $authenticator->login($user);
+    redirect('/');
+
 } else {
     abort(500);
 }

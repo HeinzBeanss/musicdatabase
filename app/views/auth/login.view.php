@@ -25,6 +25,14 @@ require base_path('views/includes/head.php');
     <p class="p">Don't have an account? Sign in <a href="/signup">here</a></p>
 </div>
 
+<?php if ($errors ?? false) : ?>
+    <div class="errors">
+        <?php foreach($errors as $error) { ?>
+            <p class="error"><?= $error ?></p>
+        <?php } ?>
+    </div>
+<?php endif; ?>
+
 </main>
 <?php
 require base_path('views/includes/footer.php');

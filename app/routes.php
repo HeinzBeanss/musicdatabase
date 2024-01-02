@@ -9,7 +9,9 @@ $router->post("/login", "auth/login-post.php");
 $router->get("/signup", "auth/signup.php");
 $router->post("/signup", "auth/signup-post.php");
 
-$router->post("/logout", "auth/logout.php");
+$router->get("/logout", "auth/logout.php");
+
+$router->get("/profile", "auth/profile.php");
 
 // SONGS
 $router->get("/songs", "songs/index.php");

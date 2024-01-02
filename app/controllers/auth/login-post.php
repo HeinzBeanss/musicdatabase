@@ -1,0 +1,55 @@
+<?php 
+
+use Core\Database;
+use Core\Validator;
+use Core\Authenticator;
+
+require base_path('/Core/Database.php');
+require base_path('/Core/Validator.php');
+require base_path('/Core/Authenticator.php');
+
+$database = new Database();
+$authenticator = new Authenticator($database);
+
+extract($_POST);
+$errors = [];
+
+if (! Validator::email($email)) {
+    $errors['email'] = "Please provide a valid email address.";
+}
+
+if (! Validator::notEmpty($email)) {
+    $errors['email'] = "Please provide a valid email address.";
+}
+
+if (! Validator::notEmpty($password)) {
+    $errors['password'] = "Please input a password.";
+}
+
+if (! empty($errors)) {
+    viewPage('/auth/login', [
+        'errors' => $errors
+    ]);
+}
+
+$status = $authenticator->verifyCredentials($email, $password);
+
+if (! $status) {
+    $errors['user'] = "Incorrect login details.";
+} 
+
+// dd($errors);
+
+if (! empty($errors)) {
+    viewPage('/auth/login', [
+        'errors' => $errors
+    ]);
+} else {
+    redirect('/');
+}
+
+
+
+// fetch the the user from teh database belonging to the email entered, if there is one.
+// unhash the database password and check if it's the same one entered, if it is.
+// login and redirect.

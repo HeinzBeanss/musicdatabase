@@ -4,6 +4,10 @@ namespace Core;
 
 class Validator {
 
+    public static function notEmpty($value) {
+        return strlen($value) > 0;
+    }
+
     public static function minMaxCharacters(string $value, $min, $max): bool {
 
         $value = trim($value);
