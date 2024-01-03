@@ -1,8 +1,10 @@
 <?php 
 
+
 use Core\Database;
 use Core\Validator;
 use Core\Authenticator;
+use Core\Session;
 
 require base_path('/Core/Database.php');
 require base_path('/Core/Validator.php');
@@ -27,9 +29,10 @@ if (! Validator::notEmpty($password)) {
 }
 
 if (! empty($errors)) {
-    viewPage('/auth/login', [
-        'errors' => $errors
-    ]);
+    foreach ($errors as $key => $error) {
+        Session::flash($key, $error, 'errors'); 
+    }
+    redirect('/login');
 }
 
 $status = $authenticator->verifyCredentials($email, $password);
@@ -41,9 +44,10 @@ if (! $status) {
 // dd($errors);
 
 if (! empty($errors)) {
-    viewPage('/auth/login', [
-        'errors' => $errors
-    ]);
+    foreach ($errors as $key => $error) {
+        Session::flash($key, $error, 'errors');
+    }
+    redirect('/login');
 } else {
     redirect('/');
 }

@@ -3,9 +3,6 @@
 namespace Core;
 
 use Core\Database;
-use Core\Session;
-
-require base_path('/Core/Session.php');
 
 Class Authenticator {
     // depedency injection

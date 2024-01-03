@@ -3,6 +3,19 @@
 namespace Core;
 
 class Session {
+
+    public static function flash($key, $value, $grouping = null) {
+        if ($grouping) {
+            $_SESSION['_flash'][$grouping][$key] = $value;
+        } else {
+            $_SESSION['_flash'][$key] = $value;
+        }
+    
+    }
+
+    public static function unflash() {
+        unset($_SESSION['_flash']);
+    }
     
     public static function flush()
     {

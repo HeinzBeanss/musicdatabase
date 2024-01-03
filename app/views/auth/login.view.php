@@ -25,9 +25,9 @@ require base_path('views/includes/head.php');
     <p class="p">Don't have an account? Sign in <a href="/signup">here</a></p>
 </div>
 
-<?php if ($errors ?? false) : ?>
+<?php if ($_SESSION['_flash']['errors'] ?? false) : ?>
     <div class="errors">
-        <?php foreach($errors as $error) { ?>
+        <?php foreach($_SESSION['_flash']['errors'] as $error) { ?>
             <p class="error"><?= $error ?></p>
         <?php } ?>
     </div>
