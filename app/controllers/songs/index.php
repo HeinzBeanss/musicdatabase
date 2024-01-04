@@ -14,4 +14,23 @@ LEFT JOIN Albums ON Songs.album_id = Albums.album_id";
 $result = $database->connection->query($database->statement);
 $song_list = $database->checkResultAndReturn($result);
 
-viewPage('songs/index', $song_list);
+$user_songs = [];
+
+if ($_SESSION['user']) {
+    
+    $database->statement = "SELECT * FROM User_Playlists WHERE user_id = ?";
+    $user_songs_full = $database->executePreparedStatement($_SERVER['REQUEST_METHOD'], $database->statement, 'i', $_SESSION['user']['user_id']);
+
+    if ($user_songs_full) {
+    
+        foreach ($user_songs_full as $song) {
+            $user_songs[] = $song['song_id'];
+        }
+    }
+
+}
+
+viewPage('songs/index', [
+    'song_list' => $song_list,
+    'user_songs' => $user_songs
+]);

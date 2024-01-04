@@ -53,3 +53,6 @@ $router->put("/artists/update", "artists/update.php");
 
 // $router->get("/artists/delete", "artists/delete.php");
 $router->delete("/artists/destroy", "artists/destroy.php");
+
+// PLAYLISTS
+$router->put("/playlist/update", "playlists/update.php");
