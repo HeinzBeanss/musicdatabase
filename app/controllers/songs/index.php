@@ -16,7 +16,7 @@ $song_list = $database->checkResultAndReturn($result);
 
 $user_songs = [];
 
-if ($_SESSION['user']) {
+if (isset($_SESSION['user'])) {
     
     $database->statement = "SELECT * FROM User_Playlists WHERE user_id = ?";
     $user_songs_full = $database->executePreparedStatement($_SERVER['REQUEST_METHOD'], $database->statement, 'i', $_SESSION['user']['user_id']);

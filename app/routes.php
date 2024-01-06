@@ -3,15 +3,15 @@
 $router->get("/", 'index.php');
 
 // AUTH
-$router->get("/login", "auth/login.php");
-$router->post("/login", "auth/login-post.php");
+$router->get("/login", "auth/login.php")->only('guest');
+$router->post("/login", "auth/login-post.php")->only('guest');
 
-$router->get("/signup", "auth/signup.php");
-$router->post("/signup", "auth/signup-post.php");
+$router->get("/signup", "auth/signup.php")->only('guest');
+$router->post("/signup", "auth/signup-post.php")->only('guest');
 
 $router->get("/logout", "auth/logout.php");
 
-$router->get("/profile", "auth/profile.php");
+$router->get("/profile", "auth/profile.php")->only('auth');
 
 // SONGS
 $router->get("/songs", "songs/index.php");
@@ -55,4 +55,4 @@ $router->put("/artists/update", "artists/update.php");
 $router->delete("/artists/destroy", "artists/destroy.php");
 
 // PLAYLISTS
-$router->put("/playlist/update", "playlists/update.php");
+$router->put("/playlist/update", "playlists/update.php")->only('auth');
