@@ -21,7 +21,7 @@ class Validator {
 
     // validate password x2
     public static function passwordsMatchCheck($passwordOne, $passwordTwo) {
-        return $passwordOne === $passwordTwo;
+        return ($passwordOne === $passwordTwo);
     }
 
 }

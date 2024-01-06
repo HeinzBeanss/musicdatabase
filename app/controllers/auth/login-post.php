@@ -6,11 +6,6 @@ use Core\Validator;
 use Core\Authenticator;
 use Core\Session;
 
-require base_path('/Core/Database.php');
-require base_path('/Core/Validator.php');
-require base_path('/Core/Authenticator.php');
-
-
 $database = new Database();
 $authenticator = new Authenticator($database);
 

@@ -4,9 +4,6 @@ use Core\Database;
 use Core\Validator;
 use Core\Authenticator;
 
-require base_path('/Core/Validator.php');
-require base_path('/Core/Database.php');
-require base_path('/Core/Authenticator.php');
 
 $database = new Database();
 $authenticator = new Authenticator($database);
@@ -43,6 +40,8 @@ if (! empty($errors)) {
     viewPage('/auth/signup', [
         'errors' => $errors,
     ]);
+
+    return;
 }
 
 $database->statement = "INSERT INTO Users(`name`, `email`, `password`) VALUES (?, ?, ?)";
