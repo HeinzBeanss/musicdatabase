@@ -1,0 +1,15 @@
+{
+    "name": "heinzbeans/project5-musiclibrary",
+    "authors": [
+        {
+            "name": "David Bean",
+            "email": "heinzbeansss@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Core\\": "app/Core/"
+        }
+    }
+}

@@ -1,7 +1,6 @@
 <?php 
 
 use Core\Database;
-require base_path('/Core/Database.php');
 
 $database = new Database();
 

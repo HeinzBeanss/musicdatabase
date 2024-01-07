@@ -4,9 +4,6 @@ namespace Core\Middleware;
 
 use Exception;
 
-require base_path('Core/Middleware/Guest.php');
-require base_path('Core/Middleware/Authenticated.php');
-
 class Middleware {
 
     // This is basically a basic middleware router, it decides which middleware to run.

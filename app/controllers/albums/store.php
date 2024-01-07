@@ -3,8 +3,6 @@
 use Core\Database;
 use Core\Validator;
 
-require base_path('/Core/Validator.php');
-require base_path('/Core/Database.php');
 $database = new Database();
 
 $database->statement =

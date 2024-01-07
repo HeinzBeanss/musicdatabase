@@ -4,7 +4,6 @@ use Core\Database;
 use Models\Album;
 use Models\Artist;
 
-require base_path('/Core/Database.php');
 require base_path('/Models/Artist.php');
 require base_path('/Models/Album.php');
 

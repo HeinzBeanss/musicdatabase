@@ -2,7 +2,6 @@
 
 use Core\Database;
 
-require base_path('/Core/Database.php');
 $database = new Database();
 
 if (isset($_POST['album_id'])) {

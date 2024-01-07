@@ -2,7 +2,6 @@
 
 use Core\Database;
 
-require base_path('/Core/Database.php');
 $database = new Database();
 
 $database->statement = "UPDATE Songs SET name = ?, length_seconds = ?, artist_id = ?, album_id = ? WHERE song_id = ?";
