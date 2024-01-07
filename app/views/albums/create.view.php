@@ -24,7 +24,7 @@ require base_path('views/includes/header.php');
         <select id="album_artist" name="album_artist" required>
             <?php
             if (count($data['artist_list']) > 0) {
-                foreach ($data as $artist) {
+                foreach ($data['artist_list'] as $artist) {
                     $artist_id = $artist['artist_id'];
                     $artist_name = $artist['name'];
                     echo "<option value=$artist_id>$artist_name</option>";
